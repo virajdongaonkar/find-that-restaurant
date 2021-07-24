@@ -17,8 +17,9 @@ def keyword_search(URL, headers):
     # extracting data
     data = r.json()
 
-    print("Some possible restaurants could be: ")
+    print("Some possible businesses could be: ")
 
+    # This code block numbers the possible businesses
     numbering = 0
 
     for business in data['businesses']:
@@ -29,38 +30,48 @@ def keyword_search(URL, headers):
     
     try:
         chosen = int(chosen)
-        if chosen is not -1:
-            name = data['businesses'][chosen]['name']
-            print("Here is all the details for " + name)
+        if chosen is not -1:    # This is the case where the business was found.
             URL = 'https://api.yelp.com/v3/businesses/' + data['businesses'][chosen]['id']
-            re = requests.get(url = URL, headers=headers)
-            data = re.json()
+            data = business_data(URL, headers)
 
-            website = data['url'] 
-            phone_number = data['display_phone']
-            categories = []
-            for category in data['categories']:
-                categories.append(category['title'])
-            rating = data['rating']
-            address = data['location']['display_address']
-
-            #start = []
-            #end = []
-
-            #for day in data['hours'][0]['open']:
-            #    start.append(day['start'])
-            #    end.append(day['end'])
- 
-            print('Yelp website: ',  website)
-            print('Address: ',  address)
-            print('Phone number:',  phone_number)
-            print('Categories: ',  categories)
-            print('Rating: ',  rating)
-        else:
+            print_data(data)
+        else:  
             print("Hope we can find the restaurant next time!")
     except:
         print("Invalid input")
 
 # This function searches for businesses based on phone numbers.
 def phone_search(URL, headers):
-    print('Searching for phone number.')
+    URL += 'businesses/search/phone'
+    phone_number = input('Searching for phone number: ')
+    params = {'phone': phone_number}
+    re = requests.get(url = URL, headers=headers, params=params)
+    data = re.json()
+    URL = 'https://api.yelp.com/v3/businesses/' + data['businesses'][0]['id']
+    data = business_data(URL, headers)
+    print_data(data)
+
+def business_data(URL, headers):
+    re = requests.get(url = URL, headers=headers)
+    data = re.json()
+    return data
+
+def print_data(data):
+    name = data['name']
+    website = data['url'] 
+    phone_number = data['display_phone']
+    
+    # Gathers all categories of the business
+    categories = []
+    for category in data['categories']:
+        categories.append(category['title'])
+    
+    rating = data['rating']
+    address = data['location']['display_address']
+
+    print("Here is all the details for " + name)
+    print('Yelp website: ',  website)
+    print('Address: ',  address)
+    print('Phone number:',  phone_number)
+    print('Categories: ',  categories)
+    print('Rating: ',  rating)
