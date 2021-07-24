@@ -12,7 +12,7 @@ headers = {
 reader.close()
   
 # This is the URL of the api-endpoint
-URL = "https://api.yelp.com/v3/businesses/search"
+URL = "https://api.yelp.com/v3/"
 
 # This variable keeps track of user response
 response = -1
