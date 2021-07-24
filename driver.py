@@ -14,7 +14,7 @@ reader.close()
 # This is the URL of the api-endpoint
 URL = "https://api.yelp.com/v3/"
 
-# This variable keeps track of user response
+# This block of code keeps track of user response and acts accordingly.
 response = -1
 
 while response < 1 or response > 2:
@@ -22,9 +22,9 @@ while response < 1 or response > 2:
 
         try:
                 response = int(response)
-                if response is 1:
+                if response is 1:       # This path follows a search based off keyword.
                         keyword_search(URL, headers)
-                elif response is 2:
+                elif response is 2:     # This path follows a search based off phone number.
                         phone_search(URL, headers)
                 else:
                         print("Invalid response, try again.")

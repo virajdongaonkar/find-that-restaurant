@@ -11,7 +11,7 @@ def keyword_search(URL, headers):
     # defining parameters to be sent to the API
     PARAMS = {'term': term, 'location':location}
     
-    # sending get request 
+    # This GET request calls the keyword Yelp Fusion API.
     r = requests.get(url = URL, headers=headers, params = PARAMS)
     
     # extracting data
@@ -43,19 +43,25 @@ def keyword_search(URL, headers):
 # This function searches for businesses based on phone numbers.
 def phone_search(URL, headers):
     URL += 'businesses/search/phone'
+    
     phone_number = input('Searching for phone number: ')
     params = {'phone': phone_number}
+
+    # This GET request calls the phone number Yelp Fusion API.
     re = requests.get(url = URL, headers=headers, params=params)
     data = re.json()
+
     URL = 'https://api.yelp.com/v3/businesses/' + data['businesses'][0]['id']
     data = business_data(URL, headers)
     print_data(data)
 
+# This function returns the data of the selected business based off their Yelp ID.
 def business_data(URL, headers):
     re = requests.get(url = URL, headers=headers)
     data = re.json()
     return data
 
+# This function prints the data of the selected business.
 def print_data(data):
     name = data['name']
     website = data['url'] 
