@@ -9,10 +9,10 @@ def keyword_search(URL, headers):
     location = input("Enter the location (\"city, state\" or \"zipcode\") of the restaurant: ")
 
     # defining parameters to be sent to the API
-    PARAMS = {'term': term, 'location':location}
+    params = {'term': term, 'location':location}
     
     # This GET request calls the keyword Yelp Fusion API.
-    r = requests.get(url = URL, headers=headers, params = PARAMS)
+    r = requests.get(url = URL, headers = headers, params = params)
     
     # extracting data
     data = r.json()

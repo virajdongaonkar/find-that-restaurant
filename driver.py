@@ -29,5 +29,5 @@ while response < 1 or response > 2:
                 else:
                         print("Invalid response, try again.")
         except:
-                print("Must be integer, try again.")
+                print("Invalid response.")
 
