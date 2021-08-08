@@ -13,10 +13,27 @@ const PersonPage = ({ match }) => {
   /*useEffect(() => {
   }, [personId]);
 */
+
   return (
     <>
       {(
         <>
+        <div>{personId == 1 ? 
+         <form>
+          <label>
+            Enter keyword:
+            <input type="text" name="keyword" />
+          </label>
+          <input type="submit" value="Submit" />
+         </form>
+          :
+        <form>
+          <label>
+            Name:
+            <input type="text" name="name" />
+          </label>
+          <input type="submit" value="Submit" />
+         </form>}</div>
           <Link to="/">Back to homepage</Link>
         </>
       )}
