@@ -10,30 +10,28 @@ const PersonPage = ({ match }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState();
 
-  /*useEffect(() => {
-  }, [personId]);
-*/
-
   return (
     <>
       {(
         <>
-        <div>{personId == 1 ? 
-         <form>
-          <label>
-            Enter keyword:
-            <input type="text" name="keyword" />
-          </label>
-          <input type="submit" value="Submit" />
-         </form>
+        <div>{
+          personId == 1 ? 
+            <form>
+              <label>
+                Enter keyword:
+                <input type="text" name="keyword" />
+              </label>
+              <input type="submit" value="Submit" />
+            </form>
           :
-        <form>
-          <label>
-            Name:
-            <input type="text" name="name" />
-          </label>
-          <input type="submit" value="Submit" />
-         </form>}</div>
+            <form>
+              <label>
+                Enter phone number (i.e. "+18008008000")
+                <input type="text" name="number" />
+              </label>
+              <input type="submit" value="Submit" />
+            </form>
+        }</div>
           <Link to="/">Back to homepage</Link>
         </>
       )}
