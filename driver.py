@@ -5,7 +5,7 @@ from yelp_functions import keyword_search, phone_search
 # This block of code finds the API_KEY from the credentials.txt file and puts it in a header dict.
 reader = open('credentials.txt', 'r')
 credentials = reader.readlines()
-API_KEY = credentials[1]    # Second line of credentials.txt should have API key
+API_KEY = credentials[0]    # Second line of credentials.txt should have API key
 headers = {
         'Authorization': 'Bearer %s' % API_KEY,
 }
