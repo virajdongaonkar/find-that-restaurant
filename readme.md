@@ -1,1 +1,7 @@
-Ever wanted to find a restaurant based off some of the details related to it, but can't quite find it? Let this app help you Find. That. Restaurant! 
+## Find That Restaurant ##
+Ever wanted to find a restaurant based off some of the details related to it, but can't quite find it? Let this app help you Find. That. Restaurant!
+This project is still a Work in Progress. While the Python script can be run, there will be a frontend GUI added and it will be hosted on Heroku. Once that is done, users will be able to use the application without procuring their own API key. For now, look below for directions on how to run this project. 
+
+## Running the Project ##
+To run this project, first download the files to your machine by clicking the green "Code" button and unzipping the downloaded zip file.
+Make sure you have Python 3.7.6 on your local machine by running "python --version" in Command Prompt. Afterwards, enter the project directory in any command-line interface. Get a Yelp API key from https://www.yelp.com/developers/documentation/v3/authentication and enter the key into a file called "credentials.txt' inside the root directory of the project. I understand this may take some time, which is why this is currently a Work in Progress. I will soon have the GUI and host this project on Heroku to abstract away this portion of running the project. Then, run "python driver.py" and follow the step-by-step directions to find the restaurant or business you are looking for. At the end, the Yelp API should supply the information for the business you are searching for. This process can be repeated for however many businesses you need to find. 
